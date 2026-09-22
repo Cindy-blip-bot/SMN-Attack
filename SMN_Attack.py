@@ -217,7 +217,7 @@ class ImageAttacker:
                 gi = torch.autograd.grad(loss, adv)[0]
                 total_grad += w * gi
 
-        return total_grad / weight_sum
+        return total_grad / (2.0 * weight_sum)
 
     def txt_guided_attack(self, model, imgs, txt2img, all_txt_supervisions, device,
                           scales=None, txt_embeds=None, return_grad=False, important_words=None):
